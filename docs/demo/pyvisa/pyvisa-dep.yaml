@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  demo-visa
+  namespace: visa-expirements
+  labels:
+    app: container-visa
+spec:
+  selector:
+    matchLabels:
+      app: container-visa
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: container-visa
+    spec:
+      containers:
+      - name: container-visa
+        image: vanguo996/centos-pyvisa:v2
+        ports:
+        - containerPort:  3000
+          name: container-visa

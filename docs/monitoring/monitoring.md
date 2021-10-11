@@ -1,4 +1,14 @@
 
+
+## dashboard安装
+
+注意版本适配问题：https://github.com/kubernetes/dashboard/releases
+```
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.3/aio/deploy/recommended.yaml
+```
+
+
+
 promethus
 
 - 易于管理，只有一个单独的二进制文件，

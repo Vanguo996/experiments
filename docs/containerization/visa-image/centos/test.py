@@ -16,6 +16,8 @@ def visalib_test():
     rm = visa.ResourceManager("@ivi")
     print(rm)
 
-connection_test()
 
-# visalib_test()
+
+if __name__ == "__main__":
+    while i:
+        connection_test()

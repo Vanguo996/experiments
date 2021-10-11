@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  demo-react
+  namespace: visa-expirements
+  labels:
+    app: demo-react
+spec:
+  selector:
+    matchLabels:
+      app: demo-react
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: demo-react
+    spec:
+      containers:
+      - name:   demo-react
+        image:  vanguo996/demoreact
+        ports:
+        - containerPort:  3000
+          name:   demo-react
