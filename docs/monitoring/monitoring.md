@@ -13,6 +13,7 @@ promethus
 ```
 git clone https://github.com/coreos/kube-prometheus.git
 ```
+使用的是operator创建promethus
 
 1. 其中创建CRD资源
 ```
@@ -20,12 +21,10 @@ kubectl apply -f kube-prometheus/manifests/setup/
 kubectl get crd |grep monitoring
 ```
 
-
 2. 部署了prometheus-operator的dep和svc
 
 ```
-kubectl get deployments -n monitoring
-kubectl get services -n monitoring
+kubectl get deployments -n monitoring && kubectl get services -n monitoring
 ```
 
 3. 部署prometheus其他组件，包含kube-state-metric，grafana，node-exporter，alertmanager，prometheus-adapter，prometheus，组件包含在manifest所在目录，安装组件的角色如下：
