@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name:  demo-visa
+  name:  visa-dep
   namespace: visa-expirements
   labels:
     app: container-visa
@@ -16,8 +16,22 @@ spec:
         app: container-visa
     spec:
       containers:
-      - name: container-visa
-        image: vanguo996/centos-pyvisa:v2
-        ports:
-        - containerPort:  3000
-          name: container-visa
+      - image: vanguo996/centos-pyvisa:websockets-server-entrypoint
+        name: visa-server
+        volumeMounts:
+          - name: dkms-src
+            mountPath: /usr/src
+          - name: dkms-lib  
+            mountPath: /var/lib/dkms
+          - name: lib-modules
+            mountPath: /lib/modules
+      volumes:
+        - name: dkms-src
+          hostPath:
+            path: /usr/src
+        - name: dkms-lib
+          hostPath:
+            path: /var/lib/dkms
+        - name: lib-modules
+          hostPath: 
+            path: /lib/modules
