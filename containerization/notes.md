@@ -2,7 +2,6 @@
 
 ## 容器化测量服务
 
-<!-- ![](https://tva1.sinaimg.cn/large/008i3skNgy1gu8ygd0juzj60my0yc41g02.jpg) -->
 示意图：
 
 <img src=https://tva1.sinaimg.cn/large/008i3skNgy1gu8ygd0juzj60my0yc41g02.jpg width = "300" height = "500" alt="图片名称" align=center />
