@@ -12,7 +12,6 @@ class ConnectionTest():
     def connection_test(self, resource_name):    
         # instr = rm.open_resource("visa://192.168.1.108/GPIB0::7::INSTR")
         instr = self.rm.open_resource(resource_name)
-        # print("找到仪器：", instr)
         return instr
 
 
@@ -26,12 +25,9 @@ class ConnectionTest():
         print(self.rm.list_resources())
 
 
-
-
 if __name__ == "__main__":
     
     ct = ConnectionTest()
-    
     while 1:
         ct.list_all_instruments()
         instr = ct.connection_test(config.test_instr_name)

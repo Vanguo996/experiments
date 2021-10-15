@@ -234,7 +234,7 @@ linux的内核时模块化组成的，内核在运行时可以动态地插入或
 
 共享库：
 ```
-docker run --name visa-test --privileged --cap-add ALL -it -v /lib/modules:/lib/modules -v /var/lib/dkms:/var/lib/dkms -v /usr/src:/usr/src vanguo996/centos-pyvisa:v2
+docker run --name visa-test --privileged --cap-add ALL -d -v /lib/modules:/lib/modules -v /var/lib/dkms:/var/lib/dkms -v /usr/src:/usr/src vanguo996/centos-pyvisa:v4
 ```
 
 运行dkms：

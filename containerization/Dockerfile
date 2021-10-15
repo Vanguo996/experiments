@@ -1,7 +1,5 @@
 FROM centos:centos7.9.2009
 
-# FROM alpine/
-
 WORKDIR /app
 
 ADD ni-software-2020-20.1.0.49152-0+f0.el7.noarch.rpm .
@@ -14,8 +12,6 @@ RUN yum install -y ni-software-2020-20.1.0.49152-0+f0.el7.noarch.rpm && \
     pip3 install pyvisa -i https://mirrors.aliyun.com/pypi/simple && \
     pip3 install grpcio grpcio-tools protobuf -i https://mirrors.aliyun.com/pypi/simple
     
-
-
 COPY /server .
 
 # 用于保持容器稳定在运行状态
