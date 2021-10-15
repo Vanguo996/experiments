@@ -87,59 +87,15 @@ kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl versio
 kubectl taint node vanserver node-role.kubernetes.io/master
 ```
 
+如需要加入节点：
+```
+kubeadm token create --print-join-command
+```
 
 ## dashboard配置
 
-curl https://raw.githubusercontent.com/kubernetes/dashboard/v2.2.0/aio/deploy/recommended.yaml
-
-暴露端口
-
-```yaml
-kind: Service
-apiVersion: v1
-metadata:
-  labels:
-    k8s-app: kubernetes-dashboard
-  name: kubernetes-dashboard
-  namespace: kubernetes-dashboard
-spec:
-  type: NodePort
-  ports:
-    - port: 443
-      targetPort: 8443
-      nodePort: 30001
-  selector:
-    k8s-app: kubernetes-dashboard
+安装kuboard
 ```
-
-
-api server认证
-创建ServiceAccount对象
-```yaml
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: admin # sa名称与rolebinding一致
-  namespace: kubernetes-dashboard
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: admin
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: cluster-admin
-subjects:
-- kind: ServiceAccount
-  name: admin
-  namespace: kubernetes-dashboard
-```
-
-kubectl get svc -A
-
-获取进入dashborad的token
-```
-kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin | awk '{print $1}')
+kubectl apply -f https://kuboard.cn/install-script/kuboard.yaml
 ```
 
