@@ -234,17 +234,16 @@ linux的内核时模块化组成的，内核在运行时可以动态地插入或
 
 共享库：
 ```
-docker run --name visa-test --privileged --cap-add ALL -it 
+docker run --name visa-test -it  vanguo996/centos-pyvisa:v2
+```
+
+--cap-add ALL
+
+--privileged
+
 -v /lib/modules:/lib/modules 
 -v /var/lib/dkms:/var/lib/dkms 
 -v /usr/src:/usr/src 
-vanguo996/centos-pyvisa:v2
-```
 
-运行dkms：
-```
-[root@e9bb32c66d80 app]# dkms status
-NiViPciK/20.0.0f0, 3.10.0-1160.el7.x86_64, x86_64: installed
-nikal/20.0.0f0, 3.10.0-1160.el7.x86_64, x86_64: installed
-nipalk/20.0.0f0, 3.10.0-1160.el7.x86_64, x86_64: installed
-```
+
+/usr/lib/x86_64-linux-gnu/libvisa.so.20.0.0
