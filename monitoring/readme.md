@@ -1,13 +1,5 @@
 
 
-## dashboard安装
-
-注意版本适配问题：https://github.com/kubernetes/dashboard/releases
-```
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.3/aio/deploy/recommended.yaml
-```
-
-
 
 promethus
 
@@ -23,6 +15,7 @@ promethus
 ```
 git clone https://github.com/coreos/kube-prometheus.git
 ```
+
 使用的是operator创建promethus
 
 1. 其中创建CRD资源
@@ -138,3 +131,21 @@ status:
   loadBalancer: {} 
 
 ```
+
+
+
+kuboard安装
+
+docker run -d \
+  --restart=unless-stopped \
+  --name=kuboard \
+  -p 80:80/tcp \
+  -p 10081:10081/tcp \
+  -e KUBOARD_ENDPOINT="http://192.168.1.101:80" \
+  -e KUBOARD_AGENT_SERVER_TCP_PORT="10081" \
+  -e KUBOARD_DISABLE_AUDIT=true \
+  -v /root/kuboard-data:/data \
+  eipwork/kuboard:v3
+
+
+  curl -ik https://192.168.1.101:10257

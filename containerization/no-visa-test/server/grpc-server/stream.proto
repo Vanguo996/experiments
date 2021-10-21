@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option go_package = ".;yoyoyo";
+
+message StreamRequestData {
+  string data = 1;
+}
+
+message StreamResponseData {
+  string data = 1;
+}
+
+service StreamTest {
+  // 服务端流模式，在返回值前面加上一个 stream
+  rpc GetStream(StreamRequestData) returns (stream StreamResponseData){}
+  // 客户端流模式，在参数前面加上一个 stream
+  rpc PutStream(stream StreamRequestData) returns (StreamResponseData){}
+  // 双向流模式
+  rpc AllStream(stream StreamRequestData) returns (stream StreamResponseData){}
+}
+
+// 所以我们看到一个服务里面的方法可以有很多个，并且这里面的参数和返回值都是 StreamRequestData 和 StreamResponseData
+// 但是不同的方法，我们也可以指定不同的参数

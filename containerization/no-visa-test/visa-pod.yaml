@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: no-visa
+  namespace: visa-expirements
+spec:
+  # hostNetwork: true
+  containers:
+  - image: vanguo996/no-visa-test
+    name: visa-server
+    securityContext:
+      privileged: true
+    # ports:
+    #   - containerPort: 8765
+

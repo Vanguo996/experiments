@@ -2,17 +2,13 @@ FROM centos:centos7.9.2009
 
 WORKDIR /app
 
-ADD ni-software-2020-20.1.0.49152-0+f0.el7.noarch.rpm .
+COPY /server .
 
-RUN yum install -y ni-software-2020-20.1.0.49152-0+f0.el7.noarch.rpm && \
-    yum install -y ni-visa && \
-    yum install -y python3 python3-devel && \
+RUN yum install -y python3 python3-devel && \
     pip3 install --upgrade setuptools -i https://mirrors.aliyun.com/pypi/simple && \
     pip3 install --upgrade pip -i https://mirrors.aliyun.com/pypi/simple && \
     pip3 install pyvisa -i https://mirrors.aliyun.com/pypi/simple && \
     pip3 install grpcio grpcio-tools protobuf -i https://mirrors.aliyun.com/pypi/simple
-    
-COPY /server .
 
 # 用于保持容器稳定在运行状态
 ENTRYPOINT ["/bin/bash", "-ce", "tail -f /dev/null"]
