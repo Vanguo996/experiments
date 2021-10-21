@@ -1,17 +1,12 @@
-# 创建一个股灾node上的文件到pod中去
-
 apiVersion: v1
 kind: Pod
 metadata:
-  name: visa-pod
+  name: visa-pod-server
   namespace: visa-expirements
 spec:
-  # restartPolicy: Never
-  # nodeSelector:
-    # key: k8s-node1
   hostNetwork: true
   containers:
-  - image: vanguo996/centos-pyvisa:websockets-server-entrypoint
+  - image: vanguo996/centos-pyvisa:websockets-server
     name: visa-server
     volumeMounts:
       - name: dkms-src
@@ -22,8 +17,8 @@ spec:
         mountPath: /lib/modules
     securityContext:
       privileged: true
-    ports:
-      - containerPort: 8765
+    # ports:
+    #   - containerPort: 8766
   volumes:
     - name: dkms-src
       hostPath:
@@ -34,3 +29,8 @@ spec:
     - name: lib-modules
       hostPath: 
         path: /lib/modules
+
+
+  # restartPolicy: Never
+  # nodeSelector:
+    # key: k8s-node1
