@@ -6,7 +6,7 @@ import config
 class ConnectionTest():
 
     def __init__(self):
-        self.rm = visa.ResourceManager("@ivi")
+        self.rm = visa.ResourceManager("/usr/lib/x86_64-linux-gnu/libvisa.so.20.0.0")
         print(self.rm)
 
     def connection_test(self, resource_name):    
