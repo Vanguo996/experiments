@@ -7,6 +7,7 @@ def connection_test():
 
     test_name = "visa://192.168.1.108/GPIB0::INTFC"
     instr = rm.open_resource(test_name)
+    rm.list_resources()
     # ok = instr.query("*idn?")
     print(instr)
 

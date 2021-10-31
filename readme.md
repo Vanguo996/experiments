@@ -72,6 +72,8 @@ spec:
   selector:
     app: demo-react
 ```
+
+
 可以看到已经运行在30123端口
 ```
 $ kubectl get svc -A 

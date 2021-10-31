@@ -1,32 +1,42 @@
+
 import pyvisa as visa
 import time
+import logging
 
 import config
 
 class ConnectionTest():
 
     def __init__(self):
-        self.rm = visa.ResourceManager("/usr/lib/x86_64-linux-gnu/libvisa.so.20.0.0")
-        print(self.rm)
+        self.rm = visa.ResourceManager(config.visa_lib)
+        logging.info("资源管理器初始化完成")
+
+    def get_rm(self):
+        """
+        """
+        return self.rm
+        
 
     def connection_test(self, resource_name):    
-        # instr = rm.open_resource("visa://192.168.1.108/GPIB0::7::INSTR")
         instr = self.rm.open_resource(resource_name)
         return instr
 
 
-    def visalib_test():
-        rm = visa.ResourceManager("@ivi")
-        print(rm)
-
     def list_all_instruments(self):
+        """例如出所有仪器名称
         """
-        """
-        print(self.rm.list_resources())
+        list_of_instrs = self.rm.list_resources()
+        logging.info("所有仪器:")
+        
 
 
 if __name__ == "__main__":
-    
+
+    logging.basicConfig(level=logging.INFO,
+                    format="%(asctime)s %(name)s %(levelname)s %(message)s",
+                    datefmt = '%Y-%m-%d  %H:%M:%S %a'    #注意月份和天数不要搞乱了，这里的格式化符与time模块相同
+                    )
+
     ct = ConnectionTest()
     while 1:
         ct.list_all_instruments()
