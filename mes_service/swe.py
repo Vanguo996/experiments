@@ -2,10 +2,11 @@ import pyvisa as visa
 import csv
 import time
 import multiprocessing
+import matplotlib
 import matplotlib.pyplot as plt
 import pandas as pd
 from matplotlib.animation import FuncAnimation
-
+matplotlib.use('Qt5Agg')
 
 class mes:
 
@@ -16,7 +17,7 @@ class mes:
 
         self.b = 2
 
-        self.c = 0.01
+        self.c = 0.1
 
         self.cmpl = 100e-3
 
