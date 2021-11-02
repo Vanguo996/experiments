@@ -26,7 +26,7 @@ async def echo(websocket, path):
             if str(t).endswith("0"):
                 await websocket.send(t)
                 await websocket.send(res)
-                # break
+                break
 
 if __name__ == "__main__":
     port = 8765
