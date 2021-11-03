@@ -6,7 +6,6 @@ import grpc
 import matsuri_pb2 as pb2
 import matsuri_pb2_grpc as pb2_grpc
 
-
 # 我们在 protobuf 里面创建的服务叫 Matsuri, 所以 pb2_grpc 会给我们提供一个名为 MatsuriServicer 的类
 # 我们直接继承它即可, 当然我们这里的类名叫什么就无所谓了
 class Matsuri(pb2_grpc.MatsuriServicer):

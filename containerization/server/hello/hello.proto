@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+
+service Hello{
+    rpc hello_grpc (hello_request) returns (hello_response);
+}
+
+message hello_request {
+    string name = 1;
+    int32 age = 2;
+}
+
+message hello_response {
+    string message = 1; 
+    bool received = 2; //数字表示第几个参数
+
+}

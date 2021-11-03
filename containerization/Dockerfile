@@ -2,7 +2,7 @@ FROM centos:centos7.9.2009
 
 WORKDIR /app
 
-ADD ni-software-2020-20.1.0.49152-0+f0.el7.noarch.rpm .
+ADD visa-driver/ni-software-2020-20.1.0.49152-0+f0.el7.noarch.rpm .
 
 RUN yum install -y ni-software-2020-20.1.0.49152-0+f0.el7.noarch.rpm && \
     yum install -y ni-visa && \

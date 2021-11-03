@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+
+option go_package = "/go_client";
+
+service Van {
+  rpc HelloVan(request) returns (response){}
+}
+message request {
+  string name = 1;
+  int32 age = 2;
+}
+
+message response {
+  string result = 1;
+}

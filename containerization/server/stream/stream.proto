@@ -1,7 +1,5 @@
 syntax = "proto3";
 
-option go_package = ".;yoyoyo";
-
 message StreamRequestData {
   string data = 1;
 }
@@ -9,6 +7,10 @@ message StreamRequestData {
 message StreamResponseData {
   string data = 1;
 }
+
+
+
+
 
 service StreamTest {
   // 服务端流模式，在返回值前面加上一个 stream

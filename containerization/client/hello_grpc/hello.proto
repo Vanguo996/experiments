@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option go_package = "/hello_pb";
+
+service Hello{
+    rpc helloGrpc (helloRequest) returns (helloResponse);
+}
+
+message helloRequest {
+    string name = 1;
+    int32 age = 2;
+}
+
+message helloResponse {
+    string message = 1; 
+    bool received = 2; //数字表示第几个参数
+}
