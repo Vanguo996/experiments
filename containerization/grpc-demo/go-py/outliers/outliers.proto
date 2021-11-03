@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = ".";
+
+service Outliers{
+    rpc Detect (OutliersRequest) returns (OutliersResponse) {}
+}
+
+message Metric{
+    google.protobuf.Timestamp time = 1;
+    string name = 2;
+    double value = 3;
+}
+
+message OutliersRequest {
+    repeated Metric metrics = 1;
+}
+
+message OutliersResponse {
+    repeated int32 indices = 1;
+}
+
